@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio técnico - 04</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 50%;
+            margin: 20px 0;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Cálculo de Percentual de Faturamento por Estado</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Estado</th>
+                <th>Faturamento (R$)</th>
+                <th>Percentual</th>
+            </tr>
+        </thead>
+        <tbody id="resultados">
+        </tbody>
+    </table>
+
+    <script>
+        const faturamento = {
+            SP: 67836.43,
+            RJ: 36678.66,
+            MG: 29229.88,
+            ES: 27165.48,
+            Outros: 19849.53
+        };
+
+        const totalFaturamento = Object.values(faturamento).reduce((total, valor) => total + valor, 0);
+
+        function calcularPercentual(faturamentoEstado) {
+            return (faturamentoEstado / totalFaturamento) * 100;
+        }
+
+        const resultadosElement = document.getElementById('resultados');
+        for (let estado in faturamento) {
+            const percentual = calcularPercentual(faturamento[estado]).toFixed(2);
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${estado}</td>
+                <td>R$ ${faturamento[estado].toFixed(2)}</td>
+                <td>${percentual}%</td>
+            `;
+            resultadosElement.appendChild(row);
+        }
+    </script>
+
+</body>
+</html>

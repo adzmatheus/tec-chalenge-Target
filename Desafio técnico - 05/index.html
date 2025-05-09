@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Desafio técnico - 05</title>
+    <style>
+        body { font-family: Arial, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .container { text-align: center; }
+        input, button { padding: 10px; margin: 5px; font-size: 16px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Inversor de String</h1>
+        <input type="text" id="inputString" placeholder="Digite uma string">
+        <button onclick="inverterString()">Inverter</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function inverterString() {
+            const input = document.getElementById("inputString").value;
+            let resultado = "";
+            for (let i = input.length - 1; i >= 0; i--) {
+                resultado += input[i];
+            }
+            document.getElementById("result").innerText = "String invertida: " + resultado;
+        }
+    </script>
+</body>
+</html>

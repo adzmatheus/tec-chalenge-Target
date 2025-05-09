@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Desafio técnico - 02</title>
+  <script>
+    function isFibonacci(num) {
+      if (num < 0) return false;
+
+      let a = 0, b = 1;
+
+      while (b <= num) {
+        if (b === num) return true;
+        [a, b] = [b, a + b];
+      }
+
+      return false;
+    }
+
+    function checkFibonacci() {
+      const num = parseInt(document.getElementById('inputNumber').value);
+      const result = isFibonacci(num)
+        ? `${num} pertence à sequência de Fibonacci.`
+        : `${num} não pertence à sequência de Fibonacci.`;
+      document.getElementById('result').innerText = result;
+    }
+  </script>
+</head>
+<body>
+  <h1>Verificar Fibonacci</h1>
+  <input type="number" id="inputNumber" placeholder="Digite um número">
+  <button onclick="checkFibonacci()">Verificar</button>
+  <p id="result"></p>
+</body>
+</html>
